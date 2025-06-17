@@ -1,0 +1,16 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "invicti-nta-cloudflare-worker"
+main = "src/index.ts"
+compatibility_date = "2025-06-11"
+
+workers_dev = false
+route = { pattern = "https://app.invicti.com/*", zone_name = "invicti.com" }
+
+[vars]
+NTA_TELEMETRY_ENDPOINT = "https://network-traffic-analysis.com/api/telemetry"
+MAX_API_REQUEST_BODY_SIZE = 262144    # 256 KB
+MAX_API_RESPONSE_BODY_SIZE = 1048576  # 1 MB
+EXCLUDED_HTTP_STATUS_CODES = "1xx,3xx,4xx,5xx"
+EXCLUDED_HTTP_METHODS = "CONNECT,OPTIONS,TRACE"
+EXCLUDED_TRAFFIC_WITH_HEADERS = ""
+
